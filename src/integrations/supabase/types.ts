@@ -62,6 +62,205 @@ export type Database = {
         }
         Relationships: []
       }
+      hackathon_scores: {
+        Row: {
+          comments: string | null
+          design_score: number
+          id: string
+          innovation_score: number
+          judge_id: string
+          presentation_score: number
+          scored_at: string
+          submission_id: string
+          technical_score: number
+        }
+        Insert: {
+          comments?: string | null
+          design_score?: number
+          id?: string
+          innovation_score?: number
+          judge_id: string
+          presentation_score?: number
+          scored_at?: string
+          submission_id: string
+          technical_score?: number
+        }
+        Update: {
+          comments?: string | null
+          design_score?: number
+          id?: string
+          innovation_score?: number
+          judge_id?: string
+          presentation_score?: number
+          scored_at?: string
+          submission_id?: string
+          technical_score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hackathon_scores_submission_id_fkey"
+            columns: ["submission_id"]
+            isOneToOne: false
+            referencedRelation: "hackathon_submissions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hackathon_submissions: {
+        Row: {
+          demo_url: string | null
+          github_url: string | null
+          hackathon_id: string
+          id: string
+          project_description: string | null
+          project_name: string
+          submitted_at: string
+          team_id: string
+          tech_stack: string[] | null
+          updated_at: string
+          video_url: string | null
+        }
+        Insert: {
+          demo_url?: string | null
+          github_url?: string | null
+          hackathon_id: string
+          id?: string
+          project_description?: string | null
+          project_name: string
+          submitted_at?: string
+          team_id: string
+          tech_stack?: string[] | null
+          updated_at?: string
+          video_url?: string | null
+        }
+        Update: {
+          demo_url?: string | null
+          github_url?: string | null
+          hackathon_id?: string
+          id?: string
+          project_description?: string | null
+          project_name?: string
+          submitted_at?: string
+          team_id?: string
+          tech_stack?: string[] | null
+          updated_at?: string
+          video_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hackathon_submissions_hackathon_id_fkey"
+            columns: ["hackathon_id"]
+            isOneToOne: false
+            referencedRelation: "hackathons"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "hackathon_submissions_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "hackathon_teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hackathon_teams: {
+        Row: {
+          created_at: string
+          description: string | null
+          hackathon_id: string
+          id: string
+          leader_id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          hackathon_id: string
+          id?: string
+          leader_id: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          hackathon_id?: string
+          id?: string
+          leader_id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hackathon_teams_hackathon_id_fkey"
+            columns: ["hackathon_id"]
+            isOneToOne: false
+            referencedRelation: "hackathons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hackathons: {
+        Row: {
+          banner_url: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          end_date: string
+          id: string
+          is_published: boolean | null
+          max_team_size: number
+          min_team_size: number
+          prizes: string | null
+          registration_deadline: string | null
+          rules: string | null
+          short_description: string | null
+          start_date: string
+          status: string
+          themes: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          banner_url?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          end_date: string
+          id?: string
+          is_published?: boolean | null
+          max_team_size?: number
+          min_team_size?: number
+          prizes?: string | null
+          registration_deadline?: string | null
+          rules?: string | null
+          short_description?: string | null
+          start_date: string
+          status?: string
+          themes?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          banner_url?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          end_date?: string
+          id?: string
+          is_published?: boolean | null
+          max_team_size?: number
+          min_team_size?: number
+          prizes?: string | null
+          registration_deadline?: string | null
+          rules?: string | null
+          short_description?: string | null
+          start_date?: string
+          status?: string
+          themes?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       lesson_completions: {
         Row: {
           completed_at: string
@@ -320,6 +519,38 @@ export type Database = {
             columns: ["problem_id"]
             isOneToOne: false
             referencedRelation: "problems"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      team_members: {
+        Row: {
+          id: string
+          joined_at: string
+          role: string
+          team_id: string
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          joined_at?: string
+          role?: string
+          team_id: string
+          user_id: string
+        }
+        Update: {
+          id?: string
+          joined_at?: string
+          role?: string
+          team_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "team_members_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "hackathon_teams"
             referencedColumns: ["id"]
           },
         ]

@@ -11,6 +11,7 @@ import Courses from "./pages/Courses";
 import Practice from "./pages/Practice";
 import ProblemDetail from "./pages/ProblemDetail";
 import Hackathons from "./pages/Hackathons";
+import HackathonDetail from "./pages/HackathonDetail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
@@ -37,6 +38,7 @@ const App = () => (
                 <Route path="/practice" element={<Practice />} />
                 <Route path="/practice/:problemId" element={<ProblemDetail />} />
                 <Route path="/hackathons" element={<Hackathons />} />
+                <Route path="/hackathons/:hackathonId" element={<HackathonDetail />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />

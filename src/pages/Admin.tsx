@@ -5,9 +5,11 @@ import { Navigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import AdminCourses from "@/components/admin/AdminCourses";
 import AdminProblems from "@/components/admin/AdminProblems";
-import { LayoutDashboard, BookOpen, Code, Users } from "lucide-react";
+import AdminLessons from "@/components/admin/AdminLessons";
+import AdminQuizzes from "@/components/admin/AdminQuizzes";
+import { LayoutDashboard, BookOpen, Code, Users, FileText, HelpCircle } from "lucide-react";
 
-type Tab = "overview" | "courses" | "problems";
+type Tab = "overview" | "courses" | "problems" | "lessons" | "quizzes";
 
 export default function Admin() {
   const { user, loading: authLoading } = useAuth();
@@ -52,6 +54,8 @@ export default function Admin() {
   const tabs = [
     { id: "overview" as Tab, label: "Overview", icon: LayoutDashboard },
     { id: "courses" as Tab, label: "Courses", icon: BookOpen },
+    { id: "lessons" as Tab, label: "Lessons", icon: FileText },
+    { id: "quizzes" as Tab, label: "Quizzes", icon: HelpCircle },
     { id: "problems" as Tab, label: "Problems", icon: Code },
   ];
 
@@ -98,6 +102,8 @@ export default function Admin() {
       )}
 
       {tab === "courses" && <AdminCourses />}
+      {tab === "lessons" && <AdminLessons />}
+      {tab === "quizzes" && <AdminQuizzes />}
       {tab === "problems" && <AdminProblems />}
     </div>
   );

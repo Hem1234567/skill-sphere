@@ -6,7 +6,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { CheckCircle, Circle, Play, ChevronRight, Trophy } from "lucide-react";
+import { CheckCircle, Circle, Play, ChevronRight, Trophy, Download } from "lucide-react";
+import { generateCertificate } from "@/lib/certificate";
 
 interface Course {
   id: string;
@@ -156,6 +157,18 @@ export default function CourseDetail() {
               <span className="font-medium">{progress}%</span>
             </div>
             <Progress value={progress} className="h-2" />
+            {progress === 100 && (
+              <Button
+                variant="outline"
+                className="mt-3 gap-2"
+                onClick={() => {
+                  const profileName = user?.user_metadata?.full_name || user?.email || "Student";
+                  generateCertificate(profileName, course.title, new Date().toLocaleDateString());
+                }}
+              >
+                <Download className="h-4 w-4" /> Download Certificate
+              </Button>
+            )}
           </div>
         )}
       </div>

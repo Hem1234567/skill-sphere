@@ -8,9 +8,10 @@ import AdminProblems from "@/components/admin/AdminProblems";
 import AdminLessons from "@/components/admin/AdminLessons";
 import AdminQuizzes from "@/components/admin/AdminQuizzes";
 import AdminUsers from "@/components/admin/AdminUsers";
-import { LayoutDashboard, BookOpen, Code, Users, FileText, HelpCircle } from "lucide-react";
+import AdminHackathons from "@/components/admin/AdminHackathons";
+import { LayoutDashboard, BookOpen, Code, Users, FileText, HelpCircle, Trophy } from "lucide-react";
 
-type Tab = "overview" | "courses" | "problems" | "lessons" | "quizzes" | "users";
+type Tab = "overview" | "courses" | "problems" | "lessons" | "quizzes" | "users" | "hackathons";
 
 export default function Admin() {
   const { user, loading: authLoading } = useAuth();
@@ -59,6 +60,7 @@ export default function Admin() {
     { id: "quizzes" as Tab, label: "Quizzes", icon: HelpCircle },
     { id: "problems" as Tab, label: "Problems", icon: Code },
     { id: "users" as Tab, label: "Users", icon: Users },
+    { id: "hackathons" as Tab, label: "Hackathons", icon: Trophy },
   ];
 
   const statCards = [
@@ -108,6 +110,7 @@ export default function Admin() {
       {tab === "quizzes" && <AdminQuizzes />}
       {tab === "problems" && <AdminProblems />}
       {tab === "users" && <AdminUsers />}
+      {tab === "hackathons" && <AdminHackathons />}
     </div>
   );
 }

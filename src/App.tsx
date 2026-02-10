@@ -15,6 +15,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
+import CourseDetail from "./pages/CourseDetail";
+import Leaderboard from "./pages/Leaderboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,9 +33,11 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/courses" element={<Courses />} />
+                <Route path="/courses/:courseId" element={<CourseDetail />} />
                 <Route path="/practice" element={<Practice />} />
                 <Route path="/practice/:problemId" element={<ProblemDetail />} />
                 <Route path="/hackathons" element={<Hackathons />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/dashboard" element={<Dashboard />} />

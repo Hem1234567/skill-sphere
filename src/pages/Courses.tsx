@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -69,7 +70,8 @@ export default function Courses() {
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((course) => (
-            <div
+            <Link
+              to={`/courses/${course.id}`}
               key={course.id}
               className="group rounded-lg border border-border bg-card p-6 hover:shadow-lg transition-all duration-300"
             >
@@ -89,7 +91,7 @@ export default function Courses() {
                   ))}
                 </div>
               )}
-            </div>
+            </Link>
           ))}
         </div>
       )}

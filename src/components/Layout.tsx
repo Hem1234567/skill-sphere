@@ -10,6 +10,7 @@ const navLinks = [
   { to: "/", label: "Home" },
   { to: "/courses", label: "Courses" },
   { to: "/practice", label: "Practice" },
+  { to: "/leaderboard", label: "Leaderboard" },
   { to: "/hackathons", label: "Hackathons" },
 ];
 
